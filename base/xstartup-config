@@ -1,0 +1,5 @@
+#!/bin/bash
+xrdb $HOME/.Xresources
+# The line below is necessary to start Xsession
+/etc/X11/Xsession
+startxfce4 &

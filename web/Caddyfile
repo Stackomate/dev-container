@@ -1,0 +1,15 @@
+# File used to configure Caddy server
+{
+	# Use ports 4199 for https and 2017 for http
+	https_port 4199
+	http_port 2017
+
+	# Required to mimic serving domains (e.g. local.mylocal.org) locally
+	# Avoids the ACME challenge
+	local_certs
+}
+
+# Import generated reverse proxies
+import ./generated/Caddyfile
+
+{$EXTRA_CADDY_CONFIG}

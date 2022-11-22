@@ -1,0 +1,12 @@
+[Desktop Entry]
+Version=1.0
+Name=Package Viewer
+Comment=Run Package Viewer
+# Using cd ~ below because running as root user 
+# may change the location initially
+Exec=bash -c 'cd ~ && pnpm dlx package-viewer; bash'
+Path=/
+Icon=utilities-terminal
+Terminal=true
+Type=Application
+Categories=Application;

@@ -1,0 +1,8 @@
+[Desktop Entry]
+Version=1.0
+Encoding=UTF-8
+Name=Autostart Script
+Type=Application
+Exec=/bin/bash -c "eval $ON_NEW_SESSION"
+Terminal=true
+StartupNotify=false
