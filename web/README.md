@@ -19,7 +19,7 @@ A Docker image containing everything from [`dev-container-base`](../base/README.
     - **Tip** If you want to add custom domains, e.g.: `local.mylocal.org`, also add them to [`extra_hosts`](https://docs.docker.com/compose/compose-file/compose-file-v3/#extra_hosts) on docker-compose or `--add-host` and to `REVERSE_PROXIES`/`FILE_SERVERS`    
 - `EXTRA_CADDY_CONFIG`: Append extra config to Caddyfile.
 
-## Using from Stackomate Registry (Recommended)
+## Using Previously Built Image (Recommended)
 
 - Simple example:
 
@@ -53,7 +53,9 @@ ${WEB_URL}
 Change `TARGETPLATFORM` accordingly below:
 - With many options:
 ```
-TARGETPLATFORM=linux/arm64 
+TARGETPLATFORM=linux/arm64
+BASE_URL="base-image-url-here"
+WEB_URL="web-image-url-here"
 . build.sh && \
 docker run \
 -p 6080:6080 \
