@@ -1,5 +1,5 @@
 cd base && \
-docker build . -t gt.rcr.is/stackomate/dev-container-base && \
+docker build . -t ${BASE_URL} && \
 cd ../web && \
-docker build . -t gt.rcr.is/stackomate/dev-container-web --build-arg TARGETPLATFORM=${TARGETPLATFORM} && \
+docker build . -t ${WEB_URL} --build-arg TARGETPLATFORM=${TARGETPLATFORM} && \
 cd ..

@@ -6,4 +6,6 @@ mkdir /home/developer/.prepare/ssl-certs && \
 # see https://dev.to/shunyuan/use-angular-cli-to-serve-https-locally-3n2o
 mkcert -cert-file /home/developer/.prepare/ssl-certs/local-cert.pem \
        -key-file /home/developer/.prepare/ssl-certs/local-key.pem \
-        $CERT_HOSTS $EXTRA_CERT_HOSTS
+        $CERT_HOSTS $EXTRA_CERT_HOSTS && \
+# Add certificates to Node.js, see: https://github.com/FiloSottile/mkcert#using-the-root-with-nodejs
+export NODE_EXTRA_CA_CERTS="$(mkcert -CAROOT)/rootCA.pem"

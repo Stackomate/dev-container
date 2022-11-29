@@ -1,4 +1,4 @@
-FROM gt.rcr.is/stackomate/dev-container-base
+FROM ${BASE_URL}
 
 ARG TARGETPLATFORM
 

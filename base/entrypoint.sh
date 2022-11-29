@@ -51,9 +51,26 @@ su developer -c 'mkdir ~/.vnc ~/.prepare'
 mv $PREPARE_FOLDER/xstartup-config /home/developer/.vnc/xstartup
 # Move reconfigure.sh from root to developer's folder
 mv $PREPARE_FOLDER/reconfigure.sh /home/developer/.prepare/reconfigure.sh
-# Copy desktop files, see: https://askubuntu.com/a/86891
-cp -a $PREPARE_FOLDER/Desktop/. /home/developer/Desktop/
+# Move desktop files, see: https://askubuntu.com/a/86891
+mkdir -p /home/developer/Desktop
+mv $PREPARE_FOLDER/Desktop/* /home/developer/Desktop
+# Change ownership of moved files to developer user
+chown -R developer /home/developer/Desktop
 chown developer /home/developer/.prepare/reconfigure.sh
+
+# Add correct locale to avoid question marks in xfce4-terminal
+# See https://forum.xfce.org/viewtopic.php?id=11392 and
+# https://wiki.archlinux.org/title/locale
+# TODO: Did not have any impact, investigate
+echo "LANG=C.utf8" >> /etc/locale.conf
+
+# See https://unix.stackexchange.com/a/561455
+# Change encoding directly in the terminal
+# TODO: Revisit once LANG issue has been addressed
+mkdir -p /home/developer/.config/xfce4/terminal
+echo "[Configuration]" >> /home/developer/.config/xfce4/terminal/terminalrc
+echo "Encoding=UTF-8" >> /home/developer/.config/xfce4/terminal/terminalrc
+chown -R developer /home/developer/.config
 
 # Environment variable that allows for a script to run after user creation
 eval $ON_USER_CREATE

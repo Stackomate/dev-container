@@ -4,5 +4,5 @@ Encoding=UTF-8
 Name=Autostart Script
 Type=Application
 Exec=/bin/bash -c "eval $ON_NEW_SESSION"
-Terminal=true
+Terminal=false
 StartupNotify=false
