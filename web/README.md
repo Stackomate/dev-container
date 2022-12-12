@@ -18,6 +18,8 @@ A Docker image containing everything from [`dev-container-base`](../base/README.
 - `EXTRA_CERT_HOSTS`: Extra hosts for which the certificate will be issued. Defaults for `CERT_HOSTS` are `localhost 127.0.0.1 192.168.1.109 172.18.0.1 ::1`
     - **Tip** If you want to add custom domains, e.g.: `local.mylocal.org`, also add them to [`extra_hosts`](https://docs.docker.com/compose/compose-file/compose-file-v3/#extra_hosts) on docker-compose or `--add-host` and to `REVERSE_PROXIES`/`FILE_SERVERS`    
 - `EXTRA_CADDY_CONFIG`: Append extra config to Caddyfile.
+- `NODE_EXTRA_CA_CERTS`: Append created certs to the Node.js runtime, e.g.:
+    - `NODE_EXTRA_CA_CERTS="$(mkcert -CAROOT)/rootCA.pem"` will add our local certs to Node.js
 
 ## Using Previously Built Image (Recommended)
 
@@ -28,7 +30,7 @@ docker run \
 -p 6080:6080 \
 -e UID=$(id -u) \
 -e GID=$(id -g) \
-${WEB_URL}
+ghcr.io/stackomate/dev-container-web
 ```
 Wait for `Navigate to this URL:` and then navigate to `http://localhost:6080` instead (same port used in `-p` command above).
 
